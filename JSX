@@ -1,0 +1,306 @@
+import { useState, useEffect } from "react";
+
+const fonts = `
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #0D1117; }
+  .display { font-family: 'Playfair Display', serif; }
+  .sans { font-family: 'Inter', sans-serif; }
+  .gold-bar { width: 48px; height: 2px; background: #C49A3C; }
+  .nav-link { background: none; border: none; color: #7A8BA0; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.05em; transition: color 0.2s; }
+  .nav-link:hover { color: #F0EAD6; }
+  .cta-primary { background: #C49A3C; color: #0D1117; border: none; padding: 14px 36px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+  .cta-primary:hover { background: #D4AA50; }
+  .cta-outline { background: transparent; color: #F0EAD6; border: 1px solid rgba(240,234,214,0.3); padding: 14px 36px; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .cta-outline:hover { border-color: #F0EAD6; }
+  .nav-cta { background: transparent; color: #C49A3C; border: 1px solid #C49A3C; padding: 9px 22px; font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+  .nav-cta:hover { background: #C49A3C; color: #0D1117; }
+  .lane-card { background: rgba(28,43,74,0.35); border-top: 2px solid #C49A3C; padding: 40px 32px; transition: background 0.25s; }
+  .lane-card:hover { background: rgba(28,43,74,0.6); }
+  .stat-cell { border-left: 2px solid #C49A3C; padding-left: 20px; }
+  .lane-item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(196,154,60,0.1); font-family: 'Inter', sans-serif; font-size: 13px; color: #F0EAD6; }
+  .lane-item:last-child { border-bottom: none; }
+  @media (max-width: 768px) {
+    .hero-title { font-size: 38px !important; }
+    .two-col { grid-template-columns: 1fr !important; gap: 48px !important; }
+    .stat-grid { grid-template-columns: 1fr 1fr !important; }
+    .three-col { grid-template-columns: 1fr !important; }
+    .nav-links { display: none; }
+    .mirror-wrap { gap: 20px !important; }
+    .mirror-text { font-size: 24px !important; }
+    .footer-row { flex-direction: column; align-items: flex-start !important; }
+  }
+`;
+
+const C = {
+  midnight: '#0D1117',
+  navy: '#1C2B4A',
+  gold: '#C49A3C',
+  goldLight: '#D4AA50',
+  cream: '#F0EAD6',
+  steel: '#7A8BA0',
+  navyFaint: 'rgba(28,43,74,0.4)',
+};
+
+export default function KSIGWebsite() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+  return (
+    <div style={{ background: C.midnight, color: C.cream, fontFamily: 'Inter, sans-serif', overflowX: 'hidden' }}>
+      <style>{fonts}</style>
+
+      {/* ── NAV ── */}
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
+        height: 68, padding: '0 40px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        background: scrolled ? 'rgba(13,17,23,0.97)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(10px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(196,154,60,0.15)' : 'none',
+        transition: 'all 0.3s'
+      }}>
+        <div className="display" style={{ fontSize: 18, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.cream }}>
+          KSIG <span style={{ color: C.gold }}>Advisors</span>
+        </div>
+        <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+          <button className="nav-link" onClick={() => go('services')}>Services</button>
+          <button className="nav-link" onClick={() => go('about')}>About</button>
+          <button className="nav-link" onClick={() => go('legacy')}>Our Story</button>
+          <button className="nav-cta sans" onClick={() => go('contact')}>Let's Talk</button>
+        </div>
+      </nav>
+
+      {/* ── HERO ── */}
+      <section style={{
+        minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        padding: '140px 40px 100px',
+        background: `linear-gradient(135deg, ${C.midnight} 0%, ${C.navy} 100%)`,
+        position: 'relative', overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: `radial-gradient(ellipse at 75% 45%, rgba(196,154,60,0.07) 0%, transparent 55%)`,
+          pointerEvents: 'none'
+        }} />
+        {/* Large ghost type behind */}
+        <div className="display" style={{
+          position: 'absolute', right: -20, top: '50%', transform: 'translateY(-50%)',
+          fontSize: 'clamp(120px, 20vw, 260px)', fontWeight: 900, lineHeight: 1,
+          color: 'rgba(196,154,60,0.04)', userSelect: 'none', pointerEvents: 'none',
+          letterSpacing: '-0.02em'
+        }}>KSIG</div>
+
+        <div style={{ maxWidth: 860, position: 'relative', zIndex: 1 }}>
+          <div className="sans" style={{ color: C.gold, fontSize: 11, letterSpacing: '0.35em', textTransform: 'uppercase', marginBottom: 32, fontWeight: 500 }}>
+            Operator-Grade Advisory · Greater Seattle Area
+          </div>
+          <h1 className="display hero-title" style={{ fontSize: 'clamp(40px, 7vw, 78px)', fontWeight: 700, lineHeight: 1.06, marginBottom: 32, color: C.cream }}>
+            Founders don't need<br />
+            more advisors.<br />
+            <span style={{ color: C.gold }}>They need operators.</span>
+          </h1>
+          <div className="gold-bar" style={{ marginBottom: 32 }} />
+          <p className="sans" style={{ fontSize: 17, lineHeight: 1.75, color: C.steel, maxWidth: 520, marginBottom: 48, fontWeight: 300 }}>
+            KSIG Advisors serves founders and PE-backed operators at the inflection points —
+            the moments where the decision in front of you is bigger than the team around you.
+          </p>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <button className="cta-primary" onClick={() => go('contact')}>Start a Conversation</button>
+            <button className="cta-outline" onClick={() => go('services')}>Our Services</button>
+          </div>
+        </div>
+
+        <div style={{ position: 'absolute', bottom: 40, left: 40, display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ width: 36, height: 1, background: C.gold }} />
+          <span className="sans" style={{ color: C.steel, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase' }}>Scroll</span>
+        </div>
+      </section>
+
+      {/* ── TICKER STRIP ── */}
+      <div style={{ background: C.gold, padding: '18px 40px', display: 'flex', gap: 0, overflow: 'hidden' }}>
+        {['Not consultants. Operators.', 'Built from the founder\'s seat.', '25+ years. $200M+ built.', 'Three lanes. One partner.', 'Engagements are selective.'].map((t, i) => (
+          <span key={i} className="display" style={{ fontSize: 14, fontWeight: 700, color: C.midnight, whiteSpace: 'nowrap', letterSpacing: '0.02em' }}>
+            {t}{i < 4 && <span style={{ margin: '0 28px', opacity: 0.35 }}>·</span>}
+          </span>
+        ))}
+      </div>
+
+      {/* ── SERVICES ── */}
+      <section id="services" style={{ padding: '100px 40px', background: C.midnight }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div className="sans" style={{ color: C.gold, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 12 }}>What We Do</div>
+          <h2 className="display" style={{ fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 700, marginBottom: 12, color: C.cream }}>Three Lanes.</h2>
+          <p className="sans" style={{ color: C.steel, fontSize: 15, marginBottom: 64, maxWidth: 480 }}>One firm. Every inflection point from scale to exit.</p>
+
+          <div className="three-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+            {[
+              {
+                n: '01', title: 'Fractional CEO / CFO',
+                desc: 'Operator-grade executive leadership without the full-time overhead. Financial systems, capital access, team development, and strategic direction for companies that need the real thing — not a consultant.',
+                items: ['Financial infrastructure build-out', 'Capital formation & lender relations', 'Board & investor reporting', 'Strategic planning & execution', 'Team development & leadership']
+              },
+              {
+                n: '02', title: 'Exit Readiness',
+                desc: 'For founders whose exit is 6–24 months out. The companies that walk away with premium multiples built their readiness intentionally — not in the weeks before going to market.',
+                items: ['Financial cleanup & normalization', 'P&L documentation & packaging', 'AI integration that holds in diligence', 'CIM-ready financial presentation', 'Diligence process preparation']
+              },
+              {
+                n: '03', title: 'Transaction Ecosystem',
+                desc: 'When it\'s time to transact, KSIG connects founders to an aligned network of M&A advisory, operational leadership, and pre-exit liquidity partners. A complete team without full-time overhead.',
+                items: ['M&A transaction advisory partners', 'Pre-exit liquidity solutions', 'Operational leadership network', 'Cross-border deal capability', 'Post-close transition support']
+              }
+            ].map((s) => (
+              <div key={s.n} className="lane-card">
+                <div className="sans" style={{ color: C.gold, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 20 }}>Lane {s.n}</div>
+                <h3 className="display" style={{ fontSize: 26, fontWeight: 700, marginBottom: 16, color: C.cream, lineHeight: 1.2 }}>{s.title}</h3>
+                <p className="sans" style={{ color: C.steel, fontSize: 13, lineHeight: 1.75, marginBottom: 28 }}>{s.desc}</p>
+                <ul style={{ listStyle: 'none' }}>
+                  {s.items.map((item, j) => (
+                    <li key={j} className="lane-item">
+                      <span style={{ color: C.gold, fontSize: 9, marginTop: 4, flexShrink: 0 }}>▸</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT / CREDENTIALS ── */}
+      <section id="about" style={{ padding: '100px 40px', background: `linear-gradient(180deg, ${C.navy} 0%, ${C.midnight} 100%)` }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div className="two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
+            <div>
+              <div className="sans" style={{ color: C.gold, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 14 }}>The Operator</div>
+              <h2 className="display" style={{ fontSize: 'clamp(30px, 4vw, 48px)', fontWeight: 700, marginBottom: 24, color: C.cream, lineHeight: 1.1 }}>
+                25 years in<br />the founder's seat.
+              </h2>
+              <div className="gold-bar" style={{ marginBottom: 28 }} />
+              <p className="sans" style={{ color: C.steel, fontSize: 15, lineHeight: 1.8, marginBottom: 20 }}>
+                Karl Ohlemann has spent 25+ years as a founder-operator — building, scaling, and turning around companies across construction, broadband infrastructure, and AEC industries. He has been in the room for every kind of inflection point a company faces.
+              </p>
+              <p className="sans" style={{ color: C.steel, fontSize: 15, lineHeight: 1.8, marginBottom: 32 }}>
+                He has evaluated and strategically declined PE acquisition offers from the ownership seat, raised growth capital under real pressure, and built the financial infrastructure that let companies grow beyond what their founders imagined.
+              </p>
+              <blockquote style={{ borderLeft: `3px solid ${C.gold}`, paddingLeft: 20, margin: 0 }}>
+                <p className="sans" style={{ color: C.cream, fontSize: 15, lineHeight: 1.8, fontStyle: 'italic' }}>
+                  "I'm a strategist and problem solver at my core. Complex situations with high stakes and no clear playbook — that's where I do my best work."
+                </p>
+                <cite className="sans" style={{ color: C.gold, fontSize: 12, letterSpacing: '0.1em', fontStyle: 'normal', textTransform: 'uppercase', display: 'block', marginTop: 12 }}>
+                  — Karl Ohlemann, Founder
+                </cite>
+              </blockquote>
+            </div>
+
+            <div className="stat-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
+              {[
+                { n: '$0 → $30M', l: 'ARR Scaled', s: 'Single company' },
+                { n: '$200M+', l: 'Revenue Built', s: 'Cumulative, from scratch' },
+                { n: '$2.3M+', l: 'Net Profit', s: 'From a $242K loss — year one' },
+                { n: '81%', l: 'Revenue Growth', s: 'Single year at BDG' },
+                { n: '25+', l: 'Years Operating', s: 'Founder-operator' },
+                { n: '2', l: 'PE Offers Declined', s: 'Market call proved right' },
+              ].map((s, i) => (
+                <div key={i} className="stat-cell">
+                  <div className="display" style={{ fontSize: 30, fontWeight: 700, color: C.gold, marginBottom: 4 }}>{s.n}</div>
+                  <div className="sans" style={{ color: C.cream, fontSize: 13, fontWeight: 500, marginBottom: 3 }}>{s.l}</div>
+                  <div className="sans" style={{ color: C.steel, fontSize: 11 }}>{s.s}</div>
+                </div>
+              ))}
+
+              <div style={{ gridColumn: '1 / -1', marginTop: 8, padding: '24px', background: 'rgba(196,154,60,0.07)', borderLeft: `2px solid ${C.gold}` }}>
+                <div className="sans" style={{ color: C.gold, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 10 }}>Credentials</div>
+                <div className="sans" style={{ color: C.steel, fontSize: 12, lineHeight: 2 }}>
+                  MIT Sloan ACE · CMA Candidate · HBR Advisory Council · Fast Company Executive Board · Fiber Broadband Association AI & ML Working Group · Shadow Ventures Advisor
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LEGACY ── */}
+      <section id="legacy" style={{ padding: '100px 40px', background: C.midnight }}>
+        <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+          <div className="sans" style={{ color: C.gold, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 14 }}>The Name</div>
+          <h2 className="display" style={{ fontSize: 'clamp(30px, 4vw, 48px)', fontWeight: 700, marginBottom: 48, color: C.cream }}>
+            Built on something that lasts.
+          </h2>
+
+          {/* Signature mirror element */}
+          <div className="mirror-wrap" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 40, marginBottom: 48 }}>
+            <div style={{ textAlign: 'right' }}>
+              <div className="display mirror-text" style={{ fontSize: 'clamp(22px, 4vw, 38px)', fontWeight: 700, color: C.cream, lineHeight: 1.2 }}>Karl</div>
+              <div className="display mirror-text" style={{ fontSize: 'clamp(22px, 4vw, 38px)', fontWeight: 700, color: C.gold, lineHeight: 1.2 }}>Siegmar</div>
+            </div>
+            <div style={{ width: 1, height: 90, background: C.gold, flexShrink: 0 }} />
+            <div style={{ textAlign: 'left' }}>
+              <div className="display mirror-text" style={{ fontSize: 'clamp(22px, 4vw, 38px)', fontWeight: 700, color: C.gold, lineHeight: 1.2 }}>Siegmar</div>
+              <div className="display mirror-text" style={{ fontSize: 'clamp(22px, 4vw, 38px)', fontWeight: 700, color: C.cream, lineHeight: 1.2 }}>Karl</div>
+            </div>
+          </div>
+
+          <p className="sans" style={{ color: C.steel, fontSize: 16, lineHeight: 1.85, marginBottom: 24 }}>
+            KSIG carries a deliberate legacy. Karl Siegmar Ohlemann and his father Siegmar Karl Ohlemann — two names, mirrored across a generation. His father escaped East Germany at 14, became the fastest 800m runner in North America, won Silver at the Pan American Games, and carried Canada's closing ceremony flag at the 1960 Rome Olympics.
+          </p>
+          <p className="sans" style={{ color: C.steel, fontSize: 16, lineHeight: 1.85, marginBottom: 24 }}>
+            He trained under Bill Bowerman at the University of Oregon alongside a young Phil Knight. He is named in <em>Bowerman and the Men of Oregon</em> — the book that documents the founding of Nike. He eventually became an American citizen and raised his family here.
+          </p>
+          <p className="sans" style={{ color: C.cream, fontSize: 16, lineHeight: 1.85 }}>
+            Two generations. One belief — the people who build lasting things do it through will, over time, without a safety net.
+          </p>
+        </div>
+      </section>
+
+      {/* ── CONTACT ── */}
+      <section id="contact" style={{
+        padding: '100px 40px',
+        background: `linear-gradient(135deg, ${C.navy} 0%, ${C.midnight} 100%)`
+      }}>
+        <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+          <div className="sans" style={{ color: C.gold, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 14 }}>Engagements Are Selective</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 62px)', fontWeight: 700, marginBottom: 24, color: C.cream, lineHeight: 1.08 }}>
+            If you're at an<br />inflection point —<br />
+            <span style={{ color: C.gold }}>let's talk.</span>
+          </h2>
+          <div className="gold-bar" style={{ margin: '0 auto 32px' }} />
+          <p className="sans" style={{ color: C.steel, fontSize: 16, lineHeight: 1.75, marginBottom: 48 }}>
+            KSIG Advisors works with a small number of founders and PE-backed operators at a time. If your situation calls for an operator-grade partner, reach out directly.
+          </p>
+          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a className="cta-primary" href="mailto:karl@ksigadvisors.com">karl@ksigadvisors.com</a>
+            <a className="cta-outline" href="https://www.linkedin.com/in/karl-ohlemann" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <p className="sans" style={{ color: C.steel, fontSize: 13, marginTop: 32 }}>
+            (425) 575-8833 · ksigadvisors.com · Greater Seattle Area
+          </p>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer className="footer-row" style={{
+        padding: '28px 40px', background: '#080B10',
+        borderTop: '1px solid rgba(196,154,60,0.12)',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        flexWrap: 'wrap', gap: 16
+      }}>
+        <div className="display" style={{ fontSize: 15, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.steel }}>
+          KSIG <span style={{ color: C.gold }}>Advisors</span>
+        </div>
+        <span className="sans" style={{ color: C.steel, fontSize: 11 }}>© 2026 KSIG Group LLC · All Rights Reserved</span>
+        <span className="sans" style={{ color: C.steel, fontSize: 11 }}>ksigadvisors.com</span>
+      </footer>
+    </div>
+  );
+}
