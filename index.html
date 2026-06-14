@@ -1,595 +1,1190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KSIG Advisors | Operator-Grade Advisory</title>
-  <meta name="description" content="KSIG Advisors — Fractional CEO/CFO, Exit Readiness, and Transaction Advisory for founders and PE-backed operators at the inflection point." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta name="description" content="KSIG Advisors — Fractional CEO/CFO and strategic advisory for PE-backed and founder-led companies. Founded by Karl Ohlemann, operator with 25+ years scaling businesses to $30M ARR. Greater Seattle Area.">
+  <meta name="keywords" content="KSIG Advisors, Karl Ohlemann, fractional CFO Seattle, fractional CEO Seattle, PE-backed CFO, exit readiness, M&A advisory, founder operator">
+  <meta property="og:title" content="KSIG Advisors | Operator-Grade Advisory">
+  <meta property="og:description" content="Founders don't need more advisors. They need operators. KSIG Advisors serves founders and PE-backed operators at the inflection points.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ksigadvisors.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ── RESET & BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { background: #0D1117; color: #F0EAD6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-    a { text-decoration: none; }
-    ul { list-style: none; }
-    img { max-width: 100%; }
 
-    /* ── TOKENS ── */
     :root {
-      --midnight: #0D1117;
-      --navy:     #1C2B4A;
-      --gold:     #C49A3C;
-      --gold-lt:  #D4AA50;
-      --cream:    #F0EAD6;
-      --steel:    #7A8BA0;
-      --navy-faint: rgba(28,43,74,0.4);
+      --navy: #0D1117;
+      --navy-mid: #1A2332;
+      --navy-light: #243447;
+      --brass: #B8965A;
+      --brass-light: #CBA96D;
+      --white: #FFFFFF;
+      --off-white: #E8E4DC;
+      --muted: #7A8A9A;
+      --warm-muted: #8A8070;
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --body: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
     }
 
-    /* ── TYPOGRAPHY ── */
-    .display { font-family: 'Playfair Display', serif; }
-    .sans    { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
 
-    /* ── UTILITIES ── */
-    .gold-bar { width: 48px; height: 2px; background: var(--gold); display: block; }
-    .eyebrow  { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
-    .section-wrap { max-width: 1100px; margin: 0 auto; }
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    /* ── NAV ── */
-    #nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 68px; padding: 0 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: background 0.3s, border-color 0.3s;
-      border-bottom: 1px solid transparent;
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13,17,23,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(184,150,90,0.12);
     }
-    #nav.scrolled {
-      background: rgba(13,17,23,0.97);
-      backdrop-filter: blur(10px);
-      border-color: rgba(196,154,60,0.15);
-    }
+
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--cream);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
     }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-link {
-      font-family: 'Inter', sans-serif; font-size: 13px;
-      letter-spacing: 0.05em; color: var(--steel);
-      background: none; border: none; cursor: pointer;
+
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid var(--brass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--brass);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo-text {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--off-white);
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-link:hover { color: var(--cream); }
-    .nav-cta {
-      font-family: 'Inter', sans-serif; font-size: 12px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--gold); background: transparent;
-      border: 1px solid var(--gold); padding: 9px 22px;
-      cursor: pointer; transition: all 0.2s;
-    }
-    .nav-cta:hover { background: var(--gold); color: var(--midnight); }
 
-    /* ── BUTTONS ── */
-    .btn-primary {
-      display: inline-block;
-      background: var(--gold); color: var(--midnight);
-      font-family: 'Inter', sans-serif; font-weight: 600;
-      font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 14px 36px; border: none; cursor: pointer;
-      transition: background 0.2s;
+    .nav-links a:hover { color: var(--brass); }
+
+    .nav-cta {
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--brass);
+      color: var(--brass) !important;
+      font-family: var(--mono);
+      font-size: 0.68rem !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s !important;
     }
-    .btn-primary:hover { background: var(--gold-lt); }
+
+    .nav-cta:hover {
+      background: var(--brass) !important;
+      color: var(--navy) !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero::after {
+      content: 'KSIG';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: var(--display);
+      font-size: 12rem;
+      font-weight: 700;
+      color: rgba(184,150,90,0.04);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--brass);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--brass);
+    }
+
+    .hero-headline {
+      font-family: var(--display);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 2.5rem;
+      max-width: 950px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--brass);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-brass {
+      display: inline-block;
+      padding: 1rem 2.25rem;
+      background: var(--brass);
+      color: var(--navy);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-brass:hover {
+      background: var(--brass-light);
+      transform: translateY(-1px);
+    }
+
     .btn-outline {
       display: inline-block;
-      background: transparent; color: var(--cream);
-      font-family: 'Inter', sans-serif; font-weight: 400;
-      font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 14px 36px;
-      border: 1px solid rgba(240,234,214,0.3);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .btn-outline:hover { border-color: var(--cream); }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 140px 40px 100px;
-      background: linear-gradient(135deg, var(--midnight) 0%, var(--navy) 100%);
-      position: relative; overflow: hidden;
-    }
-    .hero-glow {
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 75% 45%, rgba(196,154,60,0.07) 0%, transparent 55%);
-      pointer-events: none;
-    }
-    .hero-ghost {
-      position: absolute; right: -20px; top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(120px, 20vw, 260px);
-      font-weight: 900; line-height: 1;
-      color: rgba(196,154,60,0.04);
-      user-select: none; pointer-events: none;
-      letter-spacing: -0.02em;
-    }
-    .hero-inner { max-width: 860px; position: relative; z-index: 1; }
-    .hero-eyebrow { margin-bottom: 32px; }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 7vw, 76px);
-      font-weight: 700; line-height: 1.06;
-      color: var(--cream); margin-bottom: 32px;
-    }
-    .hero-title span { color: var(--gold); }
-    .hero-bar { margin-bottom: 32px; }
-    .hero-sub {
-      font-size: 17px; line-height: 1.75;
-      color: var(--steel); max-width: 520px;
-      margin-bottom: 48px; font-weight: 300;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-scroll {
-      position: absolute; bottom: 40px; left: 40px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .hero-scroll-line { width: 36px; height: 1px; background: var(--gold); }
-    .hero-scroll-label {
-      font-size: 10px; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--steel);
+      padding: 1rem 2.25rem;
+      border: 1px solid rgba(184,150,90,0.35);
+      color: var(--brass);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
     }
 
-    /* ── TICKER ── */
-    #ticker {
-      background: var(--gold); padding: 18px 40px;
-      display: flex; gap: 0; overflow: hidden;
-      white-space: nowrap;
+    .btn-outline:hover {
+      border-color: var(--brass);
+      background: rgba(184,150,90,0.06);
     }
-    .ticker-item {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px; font-weight: 700;
-      color: var(--midnight); letter-spacing: 0.02em;
-      flex-shrink: 0;
-    }
-    .ticker-dot { margin: 0 28px; opacity: 0.35; }
 
-    /* ── SERVICES ── */
-    #services { padding: 100px 40px; background: var(--midnight); }
-    .services-header { margin-bottom: 64px; }
-    .services-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 4vw, 50px);
-      font-weight: 700; color: var(--cream);
-      margin: 12px 0 12px;
+    /* METRICS BAND */
+    .metrics-band {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(184,150,90,0.12);
+      border-bottom: 1px solid rgba(184,150,90,0.12);
+      padding: 3rem;
     }
-    .services-sub { color: var(--steel); font-size: 15px; max-width: 480px; }
+
+    .metrics-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .metric {
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .metric-value {
+      font-family: var(--display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--brass);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* WHAT WE DO */
+    .services {
+      padding: 7rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--brass);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--brass);
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.75;
+      margin-bottom: 4rem;
+    }
+
     .lanes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 1.5px;
+      background: rgba(184,150,90,0.12);
     }
-    .lane-card {
-      background: rgba(28,43,74,0.35);
-      border-top: 2px solid var(--gold);
-      padding: 40px 32px;
-      transition: background 0.25s;
-    }
-    .lane-card:hover { background: rgba(28,43,74,0.62); }
-    .lane-label {
-      font-size: 11px; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .lane-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 25px; font-weight: 700;
-      color: var(--cream); margin-bottom: 16px; line-height: 1.2;
-    }
-    .lane-desc {
-      color: var(--steel); font-size: 13px;
-      line-height: 1.75; margin-bottom: 28px;
-    }
-    .lane-item {
-      display: flex; align-items: flex-start;
-      gap: 10px; padding: 9px 0;
-      border-bottom: 1px solid rgba(196,154,60,0.1);
-      font-size: 13px; color: var(--cream);
-    }
-    .lane-item:last-child { border-bottom: none; }
-    .lane-arrow { color: var(--gold); font-size: 9px; margin-top: 4px; flex-shrink: 0; }
 
-    /* ── ABOUT ── */
-    #about {
-      padding: 100px 40px;
-      background: linear-gradient(180deg, var(--navy) 0%, var(--midnight) 100%);
+    .lane {
+      background: var(--navy);
+      padding: 3rem 2.5rem;
+      position: relative;
     }
-    .about-grid {
+
+    .lane-number {
+      font-family: var(--display);
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(184,150,90,0.08);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .lane-title {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .lane-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .lane-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .lane-bullets li {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--warm-muted);
+      letter-spacing: 0.03em;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .lane-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--brass);
+      font-size: 0.65rem;
+    }
+
+    /* NETWORK */
+    .network {
+      background: var(--navy-mid);
+      padding: 7rem 3rem;
+    }
+
+    .network-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .network-intro {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: start;
+      gap: 5rem;
+      margin-bottom: 5rem;
+      align-items: start;
     }
-    .about-eyebrow { margin-bottom: 14px; }
-    .about-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 4vw, 46px);
-      font-weight: 700; color: var(--cream);
-      line-height: 1.1; margin-bottom: 24px;
+
+    .network-intro h2 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
     }
-    .about-bar { margin-bottom: 28px; }
-    .about-para {
-      color: var(--steel); font-size: 15px;
-      line-height: 1.8; margin-bottom: 20px;
+
+    .network-intro h2 em {
+      font-style: italic;
+      color: var(--brass);
     }
+
+    .network-statement {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--off-white);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .network-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* Network Hub Visualization */
+    .network-hub {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .hub-svg {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+    }
+
+    /* Network Lanes Grid */
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(184,150,90,0.1);
+    }
+
+    .network-lane {
+      background: var(--navy);
+      padding: 2rem;
+    }
+
+    .network-lane-title {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--brass);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(184,150,90,0.15);
+    }
+
+    .network-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .network-items li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+      padding-left: 0.875rem;
+      position: relative;
+    }
+
+    .network-items li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--brass);
+    }
+
+    .network-footer {
+      margin-top: 3rem;
+      padding: 2rem;
+      border: 1px solid rgba(184,150,90,0.15);
+      text-align: center;
+    }
+
+    .network-footer p {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--off-white);
+    }
+
+    .network-footer p strong {
+      font-style: normal;
+      color: var(--brass);
+    }
+
+    /* ABOUT KARL */
+    .about {
+      padding: 7rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-content h2 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-content h2 em {
+      font-style: italic;
+      color: var(--brass);
+    }
+
+    .about-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-content p strong {
+      color: var(--off-white);
+      font-weight: 500;
+    }
+
     .about-quote {
-      border-left: 3px solid var(--gold);
-      padding-left: 20px; margin-top: 12px;
+      border-left: 2px solid var(--brass);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
     }
+
     .about-quote p {
-      color: var(--cream); font-size: 15px;
-      line-height: 1.8; font-style: italic;
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--off-white) !important;
+      line-height: 1.6;
+      margin-bottom: 0.5rem !important;
     }
-    .about-cite {
-      display: block; margin-top: 12px;
-      color: var(--gold); font-size: 11px;
-      letter-spacing: 0.12em; text-transform: uppercase;
+
+    .about-quote cite {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--brass);
+      letter-spacing: 0.08em;
       font-style: normal;
     }
-    .stats-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-    }
-    .stat-cell { border-left: 2px solid var(--gold); padding-left: 20px; }
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 700;
-      color: var(--gold); margin-bottom: 4px;
-    }
-    .stat-label { color: var(--cream); font-size: 13px; font-weight: 500; margin-bottom: 3px; }
-    .stat-sub   { color: var(--steel); font-size: 11px; }
-    .creds-block {
-      grid-column: 1 / -1; margin-top: 8px;
-      padding: 24px;
-      background: rgba(196,154,60,0.06);
-      border-left: 2px solid var(--gold);
-    }
-    .creds-label { color: var(--gold); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 10px; }
-    .creds-text  { color: var(--steel); font-size: 12px; line-height: 2; }
 
-    /* ── LEGACY ── */
-    #legacy { padding: 100px 40px; background: var(--midnight); }
-    .legacy-inner { max-width: 780px; margin: 0 auto; text-align: center; }
-    .legacy-eyebrow { margin-bottom: 14px; display: inline-block; }
-    .legacy-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 4vw, 46px);
-      font-weight: 700; color: var(--cream);
-      margin-bottom: 48px;
-    }
-    .mirror-wrap {
-      display: flex; justify-content: center;
-      align-items: center; gap: 40px; margin-bottom: 48px;
-    }
-    .mirror-side { text-align: center; }
-    .mirror-line-vert { width: 1px; height: 88px; background: var(--gold); flex-shrink: 0; }
-    .mirror-name-top {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(20px, 3.5vw, 36px);
-      font-weight: 700; color: var(--cream); line-height: 1.2;
-    }
-    .mirror-name-bot {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(20px, 3.5vw, 36px);
-      font-weight: 700; color: var(--gold); line-height: 1.2;
-    }
-    .legacy-para {
-      color: var(--steel); font-size: 16px;
-      line-height: 1.85; margin-bottom: 20px;
-    }
-    .legacy-close { color: var(--cream); font-size: 16px; line-height: 1.85; }
-
-    /* ── CONTACT ── */
-    #contact {
-      padding: 100px 40px;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--midnight) 100%);
-    }
-    .contact-inner { max-width: 660px; margin: 0 auto; text-align: center; }
-    .contact-eyebrow { display: inline-block; margin-bottom: 14px; }
-    .contact-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(34px, 5vw, 60px);
-      font-weight: 700; color: var(--cream);
-      line-height: 1.08; margin-bottom: 24px;
-    }
-    .contact-title span { color: var(--gold); }
-    .contact-bar { margin: 0 auto 32px; }
-    .contact-para {
-      color: var(--steel); font-size: 16px;
-      line-height: 1.75; margin-bottom: 48px;
-    }
-    .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .contact-small {
-      color: var(--steel); font-size: 13px; margin-top: 32px;
+    .about-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(184,150,90,0.1);
     }
 
-    /* ── FOOTER ── */
+    .about-metric {
+      background: var(--navy-mid);
+      padding: 1.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .about-metric-value {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brass);
+      line-height: 1;
+    }
+
+    .about-metric-label {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-align: right;
+      max-width: 200px;
+      line-height: 1.4;
+    }
+
+    .about-credentials {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(184,150,90,0.12);
+    }
+
+    .cred-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--brass);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .cred-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .cred-tag {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid rgba(184,150,90,0.15);
+    }
+
+    /* ORIGIN */
+    .origin {
+      background: var(--navy-mid);
+      padding: 6rem 3rem;
+      border-top: 1px solid rgba(184,150,90,0.1);
+    }
+
+    .origin-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .origin-pull {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--off-white);
+      line-height: 1.4;
+      margin-bottom: 2rem;
+    }
+
+    .origin-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    .origin-body strong { color: var(--brass); font-weight: 500; }
+
+    .name-mirror {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .name-block {
+      text-align: center;
+    }
+
+    .name-given {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--brass);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .name-role {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .name-divider {
+      display: flex;
+      align-items: center;
+      color: rgba(184,150,90,0.3);
+      font-size: 1.5rem;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 7rem 3rem;
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-family: var(--display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section h2 em {
+      font-style: italic;
+      color: var(--brass);
+    }
+
+    .cta-section p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    .cta-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-contact a {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--brass);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .cta-contact a:hover { color: var(--brass-light); }
+
+    /* FOOTER */
     footer {
-      padding: 28px 40px; background: #080B10;
-      border-top: 1px solid rgba(196,154,60,0.12);
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 16px;
+      background: var(--navy-mid);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(184,150,90,0.1);
     }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 15px; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--steel);
-    }
-    .footer-logo span { color: var(--gold); }
-    .footer-text { color: var(--steel); font-size: 11px; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .lanes-grid  { grid-template-columns: 1fr; }
-      .about-grid  { grid-template-columns: 1fr; gap: 56px; }
-      .stats-grid  { grid-template-columns: 1fr 1fr; }
-      .nav-links   { display: none; }
-      #hero        { padding: 120px 24px 80px; }
-      #ticker      { padding: 18px 24px; }
-      #services    { padding: 80px 24px; }
-      #about       { padding: 80px 24px; }
-      #legacy      { padding: 80px 24px; }
-      #contact     { padding: 80px 24px; }
-      footer       { padding: 24px; flex-direction: column; align-items: flex-start; }
-      .mirror-wrap { gap: 24px; }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    @media (max-width: 500px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; }
-      .contact-actions { flex-direction: column; align-items: center; }
+
+    .footer-logo-mark {
+      width: 24px;
+      height: 24px;
+      border: 1px solid rgba(184,150,90,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--brass);
+    }
+
+    .footer-logo-text {
+      font-family: var(--display);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--brass); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .hero::after { display: none; }
+      .lanes-grid { grid-template-columns: 1fr; }
+      .network-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+      .network-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .metrics-inner { justify-content: center; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 600px) {
+      .network-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav id="nav">
-    <div class="nav-logo">KSIG <span>Advisors</span></div>
-    <div class="nav-links">
-      <button class="nav-link" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</button>
-      <button class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
-      <button class="nav-link" onclick="document.getElementById('legacy').scrollIntoView({behavior:'smooth'})">Our Story</button>
-      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
-    </div>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">K</div>
+      <span class="nav-logo-text">KSIG Advisors</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#network">Network</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
   </nav>
 
-  <!-- ── HERO ── -->
-  <section id="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-ghost">KSIG</div>
-    <div class="hero-inner">
-      <p class="eyebrow hero-eyebrow">Operator-Grade Advisory &nbsp;·&nbsp; Greater Seattle Area</p>
-      <h1 class="hero-title">
-        Founders don't need<br>
-        more advisors.<br>
-        <span>They need operators.</span>
-      </h1>
-      <span class="gold-bar hero-bar"></span>
-      <p class="hero-sub">
-        KSIG Advisors serves founders and PE-backed operators at the inflection points —
-        the moments where the decision in front of you is bigger than the team around you.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start a Conversation</a>
-        <a href="#services" class="btn-outline" onclick="event.preventDefault();document.getElementById('services').scrollIntoView({behavior:'smooth'})">Our Services</a>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <div class="hero-scroll-line"></div>
-      <span class="hero-scroll-label sans">Scroll</span>
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-tag">Operator-Grade Advisory · Greater Seattle Area</p>
+    <h1 class="hero-headline">Founders don't need<br>more advisors.<br>They need <em>operators.</em></h1>
+    <p class="hero-sub">KSIG Advisors serves founders and PE-backed operators at the inflection points — the moments where the decision in front of you is bigger than the team around you.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-brass">Start a Conversation</a>
+      <a href="#services" class="btn-outline">Our Services</a>
     </div>
   </section>
 
-  <!-- ── TICKER ── -->
-  <div id="ticker">
-    <span class="ticker-item">Not consultants. Operators.</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">Built from the founder's seat.</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">25+ years. $200M+ built.</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">Three lanes. One partner.</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">Engagements are selective.</span>
+  <!-- METRICS BAND -->
+  <div class="metrics-band">
+    <div class="metrics-inner">
+      <div class="metric">
+        <span class="metric-value">$0→$30M</span>
+        <span class="metric-label">ARR Scaled</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">$200M+</span>
+        <span class="metric-label">Revenue Built</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">$2.3M+</span>
+        <span class="metric-label">Net Profit, Year One</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">81%</span>
+        <span class="metric-label">Revenue Growth, Single Year</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">2</span>
+        <span class="metric-label">PE Offers Declined</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">25+</span>
+        <span class="metric-label">Years Operating</span>
+      </div>
+    </div>
   </div>
 
-  <!-- ── SERVICES ── -->
-  <section id="services">
-    <div class="section-wrap">
-      <div class="services-header">
-        <p class="eyebrow">What We Do</p>
-        <h2 class="services-title display">Three Lanes.</h2>
-        <p class="services-sub sans">One firm. Every inflection point from scale to exit.</p>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-tag">What We Do</p>
+    <h2 class="section-title">Three Lanes.</h2>
+    <p class="section-intro">One firm. A curated network. Every inflection point from scale to exit.</p>
+    <div class="lanes-grid">
+      <div class="lane">
+        <div class="lane-number">01</div>
+        <h3 class="lane-title">Fractional CEO / CFO</h3>
+        <p class="lane-desc">Operator-grade executive leadership without the full-time overhead. Financial systems, capital access, team development, and strategic direction for companies that need the real thing.</p>
+        <ul class="lane-bullets">
+          <li>Financial infrastructure build-out</li>
+          <li>Capital formation & lender relations</li>
+          <li>Same-day liquidity access</li>
+          <li>Board & investor reporting</li>
+          <li>Strategic planning & execution</li>
+          <li>Team development & leadership</li>
+        </ul>
       </div>
-      <div class="lanes-grid">
-
-        <!-- Lane 01 -->
-        <div class="lane-card">
-          <p class="lane-label sans">Lane 01</p>
-          <h3 class="lane-title display">Fractional CEO / CFO</h3>
-          <p class="lane-desc sans">Operator-grade executive leadership without the full-time overhead. Financial systems, capital access, team development, and strategic direction for companies that need the real thing — not a consultant.</p>
-          <ul>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Financial infrastructure build-out</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Capital formation &amp; lender relations</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Board &amp; investor reporting</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Strategic planning &amp; execution</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Team development &amp; leadership</li>
-          </ul>
-        </div>
-
-        <!-- Lane 02 -->
-        <div class="lane-card">
-          <p class="lane-label sans">Lane 02</p>
-          <h3 class="lane-title display">Exit Readiness</h3>
-          <p class="lane-desc sans">For founders whose exit is 6–24 months out. The companies that walk away with premium multiples built their readiness intentionally — not in the weeks before going to market.</p>
-          <ul>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Financial cleanup &amp; normalization</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>P&amp;L documentation &amp; packaging</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>AI integration that holds in diligence</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>CIM-ready financial presentation</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Diligence process preparation</li>
-          </ul>
-        </div>
-
-        <!-- Lane 03 -->
-        <div class="lane-card">
-          <p class="lane-label sans">Lane 03</p>
-          <h3 class="lane-title display">Transaction Ecosystem</h3>
-          <p class="lane-desc sans">When it's time to transact, KSIG connects founders to an aligned network of M&amp;A advisory, operational leadership, and pre-exit liquidity partners. A complete team without full-time overhead.</p>
-          <ul>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>M&amp;A transaction advisory partners</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Pre-exit liquidity solutions</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Operational leadership network</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Cross-border deal capability</li>
-            <li class="lane-item sans"><span class="lane-arrow">▸</span>Post-close transition support</li>
-          </ul>
-        </div>
-
+      <div class="lane">
+        <div class="lane-number">02</div>
+        <h3 class="lane-title">Exit Readiness</h3>
+        <p class="lane-desc">For founders whose exit is 6–24 months out. The companies that walk away with premium multiples built their readiness intentionally — not in the weeks before going to market.</p>
+        <ul class="lane-bullets">
+          <li>Financial cleanup & normalization</li>
+          <li>P&L documentation & packaging</li>
+          <li>AI integration that holds in diligence</li>
+          <li>CIM-ready financial presentation</li>
+          <li>Diligence process preparation</li>
+        </ul>
+      </div>
+      <div class="lane">
+        <div class="lane-number">03</div>
+        <h3 class="lane-title">Transaction Ecosystem</h3>
+        <p class="lane-desc">When it's time to transact, KSIG connects founders to an aligned network of M&A advisory, operational leadership, and pre-exit liquidity partners.</p>
+        <ul class="lane-bullets">
+          <li>M&A transaction advisory partners</li>
+          <li>Pre-exit liquidity solutions</li>
+          <li>Operational leadership network</li>
+          <li>Cross-border deal capability</li>
+          <li>Post-close transition support</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ── ABOUT ── -->
-  <section id="about">
-    <div class="section-wrap">
-      <div class="about-grid">
-        <!-- Left col -->
+  <!-- NETWORK -->
+  <section class="network" id="network">
+    <div class="network-inner">
+      <div class="network-intro">
         <div>
-          <p class="eyebrow about-eyebrow">The Operator</p>
-          <h2 class="about-title display">25 years in<br>the founder's seat.</h2>
-          <span class="gold-bar about-bar"></span>
-          <p class="about-para sans">Karl Ohlemann has spent 25+ years as a founder-operator — building, scaling, and turning around companies across construction, broadband infrastructure, and AEC industries. He has been in the room for every kind of inflection point a company faces.</p>
-          <p class="about-para sans">He has evaluated and strategically declined PE acquisition offers from the ownership seat, raised growth capital under real pressure, and built the financial infrastructure that let companies grow beyond what their founders imagined.</p>
-          <blockquote class="about-quote">
-            <p class="sans">"I'm a strategist and problem solver at my core. Complex situations with high stakes and no clear playbook — that's where I do my best work."</p>
-            <cite class="about-cite sans">— Karl Ohlemann, Founder</cite>
-          </blockquote>
+          <p class="section-tag">The Network</p>
+          <h2>One relationship.<br><em>A curated network<br>of aligned specialists.</em></h2>
         </div>
-        <!-- Right col: stats -->
         <div>
-          <div class="stats-grid">
-            <div class="stat-cell">
-              <div class="stat-number display">$0 → $30M</div>
-              <div class="stat-label sans">ARR Scaled</div>
-              <div class="stat-sub sans">Single company</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number display">$200M+</div>
-              <div class="stat-label sans">Revenue Built</div>
-              <div class="stat-sub sans">Cumulative, from scratch</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number display">$2.3M+</div>
-              <div class="stat-label sans">Net Profit</div>
-              <div class="stat-sub sans">From a $242K loss — year one</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number display">81%</div>
-              <div class="stat-label sans">Revenue Growth</div>
-              <div class="stat-sub sans">Single year at BDG</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number display">25+</div>
-              <div class="stat-label sans">Years Operating</div>
-              <div class="stat-sub sans">Founder-operator</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number display">2</div>
-              <div class="stat-label sans">PE Offers Declined</div>
-              <div class="stat-sub sans">Market call proved right</div>
-            </div>
-            <div class="creds-block">
-              <div class="creds-label sans">Credentials</div>
-              <div class="creds-text sans">MIT Sloan ACE &nbsp;·&nbsp; CMA Candidate &nbsp;·&nbsp; HBR Advisory Council &nbsp;·&nbsp; Fast Company Executive Board &nbsp;·&nbsp; Fiber Broadband Association AI &amp; ML Working Group &nbsp;·&nbsp; Shadow Ventures Advisor</div>
-            </div>
+          <p class="network-statement">"KSIG doesn't try to do everything. We do what we're exceptional at — and we've built the network for the rest."</p>
+          <p class="network-body">When you engage KSIG, you're not getting one person. You're getting a curated network of founder-operators, C-level executives, and specialty professionals — organized around the moments that define whether a company survives, scales, or exits successfully.</p>
+          <br>
+          <p class="network-body">Every member of the KSIG network has built, sold, or led companies. We don't work with advisors who have only advised. Engagements are led by Karl Ohlemann. The right people follow.</p>
+        </div>
+      </div>
+
+      <!-- Network Hub SVG -->
+      <div class="network-hub">
+        <svg class="hub-svg" viewBox="0 0 700 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connecting lines -->
+          <line x1="350" y1="190" x2="100" y2="80" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <line x1="350" y1="190" x2="350" y2="50" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <line x1="350" y1="190" x2="600" y2="80" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <line x1="350" y1="190" x2="100" y2="320" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <line x1="350" y1="190" x2="350" y2="340" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <line x1="350" y1="190" x2="600" y2="320" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+
+          <!-- Center hub -->
+          <circle cx="350" cy="190" r="52" fill="rgba(184,150,90,0.08)" stroke="rgba(184,150,90,0.4)" stroke-width="1.5"/>
+          <circle cx="350" cy="190" r="38" fill="rgba(184,150,90,0.05)" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <text x="350" y="184" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="18" font-weight="700">KSIG</text>
+          <text x="350" y="202" text-anchor="middle" fill="rgba(184,150,90,0.6)" font-family="DM Mono, monospace" font-size="7" letter-spacing="2">ADVISORS</text>
+
+          <!-- Satellite nodes -->
+          <!-- Capital & Transactions -->
+          <circle cx="100" cy="80" r="36" fill="rgba(26,35,50,0.9)" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <text x="100" y="74" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">CAPITAL &amp;</text>
+          <text x="100" y="86" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">TRANSACTIONS</text>
+
+          <!-- Legal & Commercial -->
+          <circle cx="350" cy="50" r="36" fill="rgba(26,35,50,0.9)" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <text x="350" y="44" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">LEGAL &amp;</text>
+          <text x="350" y="56" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">COMMERCIAL</text>
+
+          <!-- Technology & AI -->
+          <circle cx="600" cy="80" r="36" fill="rgba(26,35,50,0.9)" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <text x="600" y="74" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">TECHNOLOGY</text>
+          <text x="600" y="86" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">&amp; AI</text>
+
+          <!-- Finance & Accounting -->
+          <circle cx="100" cy="320" r="36" fill="rgba(26,35,50,0.9)" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <text x="100" y="314" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">FINANCE &amp;</text>
+          <text x="100" y="326" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">ACCOUNTING</text>
+
+          <!-- Operations & People -->
+          <circle cx="350" cy="340" r="36" fill="rgba(26,35,50,0.9)" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <text x="350" y="334" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">OPERATIONS</text>
+          <text x="350" y="346" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">&amp; PEOPLE</text>
+
+          <!-- Industry Verticals -->
+          <circle cx="600" cy="320" r="36" fill="rgba(26,35,50,0.9)" stroke="rgba(184,150,90,0.2)" stroke-width="1"/>
+          <text x="600" y="314" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">INDUSTRY</text>
+          <text x="600" y="326" text-anchor="middle" fill="#B8965A" font-family="DM Mono, monospace" font-size="6.5" letter-spacing="0.5">VERTICALS</text>
+        </svg>
+      </div>
+
+      <!-- Network Lanes Detail -->
+      <div class="network-grid">
+        <div class="network-lane">
+          <p class="network-lane-title">Capital & Transactions</p>
+          <ul class="network-items">
+            <li>M&A advisory</li>
+            <li>Pre-exit liquidity</li>
+            <li>Growth capital</li>
+            <li>Debt structuring</li>
+            <li>Venture & private equity relationships</li>
+            <li>Family office connections</li>
+          </ul>
+        </div>
+        <div class="network-lane">
+          <p class="network-lane-title">Legal & Commercial</p>
+          <ul class="network-items">
+            <li>Business & commercial legal counsel</li>
+            <li>Contract structuring</li>
+            <li>Employment & equity</li>
+            <li>Regulatory & compliance</li>
+            <li>Transaction documentation</li>
+          </ul>
+        </div>
+        <div class="network-lane">
+          <p class="network-lane-title">Technology & AI</p>
+          <ul class="network-items">
+            <li>ERP & accounting system implementation</li>
+            <li>AI integration for finance & operations</li>
+            <li>Data infrastructure</li>
+            <li>Cybersecurity & IT governance</li>
+          </ul>
+        </div>
+        <div class="network-lane">
+          <p class="network-lane-title">Finance & Accounting</p>
+          <ul class="network-items">
+            <li>Fractional CFO/Controller depth</li>
+            <li>Construction & job cost accounting</li>
+            <li>Nonprofit financial leadership</li>
+            <li>Tax strategy & compliance</li>
+            <li>Audit preparation</li>
+          </ul>
+        </div>
+        <div class="network-lane">
+          <p class="network-lane-title">Operations & People</p>
+          <ul class="network-items">
+            <li>Operational leadership</li>
+            <li>HR & organizational design</li>
+            <li>Supply chain</li>
+            <li>Process optimization</li>
+            <li>Executive coaching & leadership development</li>
+          </ul>
+        </div>
+        <div class="network-lane">
+          <p class="network-lane-title">Industry Verticals</p>
+          <ul class="network-items">
+            <li>Construction & AEC</li>
+            <li>Broadband & telecom infrastructure</li>
+            <li>Real estate & development</li>
+            <li>Manufacturing</li>
+            <li>Professional services</li>
+            <li>Technology & SaaS</li>
+            <li>Nonprofit & social enterprise</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="network-footer">
+        <p>Engagements are led by <strong>Karl Ohlemann.</strong> The right people follow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT KARL -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-content">
+        <p class="section-tag">The Operator</p>
+        <h2>25 years in<br>the <em>founder's seat.</em></h2>
+        <p>Karl Ohlemann has spent 25+ years as a founder-operator — building, scaling, and turning around companies across construction, broadband infrastructure, and AEC industries. He has been in the room for every kind of inflection point a company faces.</p>
+        <p>He has evaluated and <strong>strategically declined PE acquisition offers from the ownership seat</strong>, raised growth capital under real pressure, and built the financial infrastructure that let companies grow beyond what their founders imagined.</p>
+        <div class="about-quote">
+          <p>"I'm a strategist and problem solver at my core. Complex situations with high stakes and no clear playbook — that's where I do my best work."</p>
+          <cite>— Karl Ohlemann, Founder & Managing Partner</cite>
+        </div>
+        <div class="about-credentials">
+          <p class="cred-label">Credentials</p>
+          <div class="cred-tags">
+            <span class="cred-tag">MIT Sloan ACE</span>
+            <span class="cred-tag">CMA Candidate</span>
+            <span class="cred-tag">HBR Advisory Council</span>
+            <span class="cred-tag">Fast Company Executive Board</span>
+            <span class="cred-tag">Fiber Broadband Association AI & ML WG</span>
+            <span class="cred-tag">Shadow Ventures Advisor</span>
+            <span class="cred-tag">2024 CXO 2.0 Excellence Award</span>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="https://karlohlemann.com" class="btn-outline">Full Background →</a>
+        </div>
+      </div>
+      <div>
+        <div class="about-metrics">
+          <div class="about-metric">
+            <span class="about-metric-value">$0→$30M</span>
+            <span class="about-metric-label">ARR scaled — single company</span>
+          </div>
+          <div class="about-metric">
+            <span class="about-metric-value">$200M+</span>
+            <span class="about-metric-label">Revenue built, cumulative from scratch</span>
+          </div>
+          <div class="about-metric">
+            <span class="about-metric-value">$2.3M+</span>
+            <span class="about-metric-label">Net profit from a $242K loss — year one as CFO</span>
+          </div>
+          <div class="about-metric">
+            <span class="about-metric-value">81%</span>
+            <span class="about-metric-label">Revenue growth, single year</span>
+          </div>
+          <div class="about-metric">
+            <span class="about-metric-value">25+</span>
+            <span class="about-metric-label">Years as founder-operator</span>
+          </div>
+          <div class="about-metric">
+            <span class="about-metric-value">2</span>
+            <span class="about-metric-label">PE acquisition offers declined — market call proved right</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── LEGACY ── -->
-  <section id="legacy">
-    <div class="legacy-inner">
-      <span class="eyebrow legacy-eyebrow">The Name</span>
-      <h2 class="legacy-title display">Built on something that lasts.</h2>
-
-      <!-- Signature mirror element -->
-      <div class="mirror-wrap">
-        <div class="mirror-side">
-          <div class="mirror-name-top display">Karl</div>
-          <div class="mirror-name-bot display">Siegmar</div>
+  <!-- ORIGIN -->
+  <section class="origin">
+    <div class="origin-inner">
+      <p class="section-tag" style="justify-content:center;">The Name</p>
+      <p class="origin-pull">"Built on something that lasts."</p>
+      <div class="name-mirror">
+        <div class="name-block">
+          <span class="name-given">Karl Siegmar</span>
+          <span class="name-role">Son · Founder</span>
         </div>
-        <div class="mirror-line-vert"></div>
-        <div class="mirror-side">
-          <div class="mirror-name-bot display">Siegmar</div>
-          <div class="mirror-name-top display">Karl</div>
+        <div class="name-divider">⟷</div>
+        <div class="name-block">
+          <span class="name-given">Siegmar Karl</span>
+          <span class="name-role">Father · Builder</span>
         </div>
       </div>
-
-      <p class="legacy-para sans">
-        KSIG carries a deliberate legacy. Karl Siegmar Ohlemann and his father Siegmar Karl Ohlemann — two names, mirrored across a generation. His father escaped East Germany at 14, became the fastest 800m runner in North America, won Silver at the Pan American Games, and carried Canada's closing ceremony flag at the 1960 Rome Olympics.
-      </p>
-      <p class="legacy-para sans">
-        He trained under Bill Bowerman at the University of Oregon alongside a young Phil Knight, and remained a lifelong friend of both men. He is named in <em>Bowerman and the Men of Oregon</em> — the book that documents the founding of Nike.
-      </p>
-      <p class="legacy-close sans">
-        Two generations. One belief — the people who build lasting things do it through will, over time, without a safety net.
-      </p>
+      <p class="origin-body">KSIG carries a deliberate legacy. <strong>Karl Siegmar Ohlemann</strong> and his father <strong>Siegmar Karl Ohlemann</strong> — two names, mirrored across a generation. His father escaped East Germany at 14, became the fastest 800m runner in North America, won Silver at the Pan American Games, and carried Canada's closing ceremony flag at the 1960 Rome Olympics.</p>
+      <p class="origin-body">He trained under <strong>Bill Bowerman</strong> at the University of Oregon alongside a young <strong>Phil Knight</strong>, and remained a lifelong friend of both men. He is named in <em>Bowerman and the Men of Oregon</em> — the book that documents the founding of Nike.</p>
+      <p class="origin-body">Two generations. One belief — the people who build lasting things do it through will, over time, without a safety net.</p>
     </div>
   </section>
 
-  <!-- ── CONTACT ── -->
-  <section id="contact">
-    <div class="contact-inner">
-      <span class="eyebrow contact-eyebrow">Engagements Are Selective</span>
-      <h2 class="contact-title display">
-        If you're at an<br>inflection point —<br>
-        <span>let's talk.</span>
-      </h2>
-      <span class="gold-bar contact-bar"></span>
-      <p class="contact-para sans">
-        KSIG Advisors works with a small number of founders and PE-backed operators at a time. If your situation calls for an operator-grade partner, reach out directly.
-      </p>
-      <div class="contact-actions">
-        <a href="mailto:karl.ohlemann@ksigadvisors.com" class="btn-primary">karl.ohlemann@ksigadvisors.com</a>
-        <a href="https://www.linkedin.com/company/ksig-advisors" target="_blank" rel="noreferrer" class="btn-outline">LinkedIn</a>
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner">
+      <p class="section-tag" style="justify-content:center;">Engagements Are Selective</p>
+      <h2>If you're at an<br><em>inflection point —</em><br>let's talk.</h2>
+      <p>KSIG Advisors works with a small number of founders and PE-backed operators at a time. If your situation calls for an operator-grade partner — and the network behind them — reach out directly.</p>
+      <div style="margin-bottom:2rem;">
+        <a href="mailto:karl.ohlemann@ksigadvisors.com" class="btn-brass">Start a Conversation</a>
       </div>
-      <p class="contact-small sans">(425) 575-8833 &nbsp;·&nbsp; ksigadvisors.com &nbsp;·&nbsp; Greater Seattle Area</p>
+      <div class="cta-contact">
+        <a href="mailto:karl.ohlemann@ksigadvisors.com">karl.ohlemann@ksigadvisors.com</a>
+        <a href="tel:+14255758833">(425) 575-8833</a>
+        <a href="https://www.linkedin.com/in/karl-ohlemann/" target="_blank">LinkedIn — Karl Ohlemann</a>
+        <a href="https://karlohlemann.com">karlohlemann.com</a>
+      </div>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-logo display">KSIG <span>Advisors</span></div>
-    <span class="footer-text sans">© 2026 KSIG Group LLC · All Rights Reserved</span>
-    <span class="footer-text sans">ksigadvisors.com</span>
+    <div class="footer-logo">
+      <div class="footer-logo-mark">K</div>
+      <span class="footer-logo-text">KSIG Advisors</span>
+    </div>
+    <span class="footer-copy">© 2026 KSIG Group LLC · All Rights Reserved · ksigadvisors.com</span>
+    <div class="footer-links">
+      <a href="https://karlohlemann.com">Karl Ohlemann</a>
+      <a href="https://www.linkedin.com/in/karl-ohlemann/" target="_blank">LinkedIn</a>
+    </div>
   </footer>
-
-  <!-- ── NAV SCROLL JS ── -->
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 40) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-  </script>
 
 </body>
 </html>
