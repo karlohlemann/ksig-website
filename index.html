@@ -814,8 +814,154 @@
 
     .footer-links a:hover { color: var(--brass); }
 
+    /* VALUE CHAIN */
+    .value-chain {
+      padding: 7rem 3rem;
+      background: var(--navy);
+      border-top: 1px solid rgba(184,150,90,0.15);
+    }
+
+    .value-chain-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .chain-stages {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-top: 4rem;
+      margin-bottom: 3.5rem;
+      background: rgba(184,150,90,0.10);
+      border: 1px solid rgba(184,150,90,0.22);
+    }
+
+    .chain-stage {
+      flex: 1;
+      padding: 2.25rem 1.75rem;
+      background: var(--navy-mid);
+      border-right: 1px solid rgba(184,150,90,0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .chain-stage:last-child { border-right: none; }
+
+    .chain-stage-num {
+      font-family: var(--display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(184,150,90,0.30);
+      line-height: 1;
+    }
+
+    .chain-stage-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--brass);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(184,150,90,0.22);
+    }
+
+    .chain-stage-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .chain-arrow {
+      display: none;
+    }
+
+    /* Parallel tracks */
+    .chain-parallel {
+      border: 1px solid rgba(184,150,90,0.22);
+      padding: 2rem 2.25rem;
+      background: rgba(26,35,50,0.5);
+    }
+
+    .chain-parallel-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--brass);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(184,150,90,0.18);
+    }
+
+    .chain-parallel-tracks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .chain-track-role {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--off-white);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .chain-track-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* PARTNER CARDS */
+    .partner-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(184,150,90,0.18);
+      margin-bottom: 5rem;
+    }
+
+    .partner-card {
+      background: var(--navy);
+      padding: 2rem 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .partner-card--center {
+      grid-column: 2;
+    }
+
+    .partner-card-role {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--brass);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(184,150,90,0.22);
+      display: block;
+    }
+
+    .partner-card-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
+      .chain-stages { flex-direction: column; }
+      .chain-stage { border-right: none; border-bottom: 1px solid rgba(184,150,90,0.18); }
+      .chain-stage:last-child { border-bottom: none; }
+      .chain-parallel-tracks { grid-template-columns: 1fr; gap: 1.5rem; }
+      .partner-cards { grid-template-columns: 1fr 1fr; }
+      .partner-card--center { grid-column: auto; }
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       .hero { padding: 7rem 1.5rem 4rem; }
@@ -830,6 +976,8 @@
     }
 
     @media (max-width: 600px) {
+      .partner-cards { grid-template-columns: 1fr; }
+      .chain-stages { flex-direction: column; }
       .network-grid { grid-template-columns: 1fr; }
       .hero-headline {
         font-size: clamp(2.2rem, 10vw, 3rem);
@@ -882,24 +1030,20 @@
   <div class="metrics-band">
     <div class="metrics-inner">
       <div class="metric">
-        <span class="metric-value">$0→$30M</span>
-        <span class="metric-label">ARR Scaled</span>
+        <span class="metric-value">85+</span>
+        <span class="metric-label">Global Buy-Side Partners</span>
       </div>
       <div class="metric">
-        <span class="metric-value">$200M+</span>
-        <span class="metric-label">Revenue Built</span>
+        <span class="metric-value">$150M+</span>
+        <span class="metric-label">Pre-Exit Liquidity</span>
       </div>
       <div class="metric">
-        <span class="metric-value">$2.3M+</span>
-        <span class="metric-label">Net Profit, Year One</span>
+        <span class="metric-value">250</span>
+        <span class="metric-label">Fractional CFO Network</span>
       </div>
       <div class="metric">
-        <span class="metric-value">81%</span>
-        <span class="metric-label">Revenue Growth, Single Year</span>
-      </div>
-      <div class="metric">
-        <span class="metric-value">25+</span>
-        <span class="metric-label">Years Operating</span>
+        <span class="metric-value">360°</span>
+        <span class="metric-label">Exit Coverage</span>
       </div>
     </div>
   </div>
@@ -926,7 +1070,7 @@
       <div class="lane">
         <div class="lane-number">02</div>
         <h3 class="lane-title">Exit Readiness</h3>
-        <p class="lane-desc">For founders whose exit is 6–24 months out. The companies that walk away with premium multiples built their readiness intentionally — not in the weeks before going to market.</p>
+        <p class="lane-desc">For founders whose exit is 6–24 months out. The companies that walk away with premium multiples built their readiness intentionally — not in the weeks before going to market. Financial and operational cleanup run simultaneously through aligned partner tracks.</p>
         <ul class="lane-bullets">
           <li>Financial cleanup & normalization</li>
           <li>P&L documentation & packaging</li>
@@ -950,6 +1094,63 @@
     </div>
   </section>
 
+  <!-- VALUE CHAIN -->
+  <section class="value-chain">
+    <div class="value-chain-inner">
+      <p class="section-tag" style="justify-content:center;">How It Works</p>
+      <h2 class="section-title" style="text-align:center;">The Complete Exit Journey.</h2>
+      <p class="section-intro" style="text-align:center;margin-left:auto;margin-right:auto;">Five stages. One coordinated ecosystem. KSIG sits at the center — financial and operational tracks running in parallel from day one through close and beyond.</p>
+      <div class="chain-stages">
+        <div class="chain-stage">
+          <div class="chain-stage-num">01</div>
+          <div class="chain-stage-label">Origination</div>
+          <div class="chain-stage-desc">Deal flow and founder referrals through our global buy-side M&A network — 85+ active partners across Europe and North America.</div>
+        </div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-stage">
+          <div class="chain-stage-num">02</div>
+          <div class="chain-stage-label">KSIG Core</div>
+          <div class="chain-stage-desc">Financial cleanup, infrastructure build, value creation, and CIM-ready preparation. Expanded CFO delivery and operational advisory run in parallel.</div>
+        </div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-stage">
+          <div class="chain-stage-num">03</div>
+          <div class="chain-stage-label">Pre-Exit Liquidity</div>
+          <div class="chain-stage-desc">Equity unlocked before transaction close — no immediate tax consequences — for qualifying founders through our family office capital partner.</div>
+        </div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-stage">
+          <div class="chain-stage-num">04</div>
+          <div class="chain-stage-label">Transaction</div>
+          <div class="chain-stage-desc">KSIG-packaged company transacts through our global buy-side network. European banking backstop available for qualifying deals.</div>
+        </div>
+        <div class="chain-arrow">›</div>
+        <div class="chain-stage">
+          <div class="chain-stage-num">05</div>
+          <div class="chain-stage-label">Post-Close Wealth</div>
+          <div class="chain-stage-desc">Financial planning, estate strategy, and long-term wealth management for founders and executives — from boutique family office to institutional scale.</div>
+        </div>
+      </div>
+      <div class="chain-parallel">
+        <span class="chain-parallel-label">Parallel tracks active during KSIG core engagement</span>
+        <div class="chain-parallel-tracks">
+          <div class="chain-track">
+            <span class="chain-track-role">Expanded CFO Delivery</span>
+            <span class="chain-track-desc">250-member fractional CFO network available when engagement scope demands it — KSIG manages the client relationship.</span>
+          </div>
+          <div class="chain-track">
+            <span class="chain-track-role">Operational Advisory</span>
+            <span class="chain-track-desc">Operational cleanup runs alongside financial cleanup — both tracks move simultaneously so no time is lost in the readiness window.</span>
+          </div>
+          <div class="chain-track">
+            <span class="chain-track-role">Operational Efficiency</span>
+            <span class="chain-track-desc">Virtual staffing that reduces founder/operator dependency — a primary valuation discount in LMM transactions — while lowering overhead.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- NETWORK -->
   <section class="network" id="network">
     <div class="network-inner">
@@ -963,6 +1164,38 @@
           <p class="network-body">When you engage KSIG, you're not getting one person. You're getting a curated network of founder-operators, C-level executives, and specialty professionals — organized around the moments that define whether a company survives, scales, or exits successfully.</p>
           <br>
           <p class="network-body">Every member of the KSIG network has built, sold, or led companies. We don't work with advisors who have only advised.</p>
+        </div>
+      </div>
+
+      <!-- Partner Role Cards -->
+      <div class="partner-cards">
+        <div class="partner-card">
+          <span class="partner-card-role">Origination + Transaction</span>
+          <p class="partner-card-desc">Global M&A deal origination and transaction execution. 85+ active buy-side partners. $300K–$5M EBITDA focus. European banking backstop for qualifying deals.</p>
+        </div>
+        <div class="partner-card">
+          <span class="partner-card-role">Pre-Exit Liquidity</span>
+          <p class="partner-card-desc">Family office capital partner. Unlocks equity for qualifying founders before transaction close — no immediate tax consequences. Targeting $150M+ deployed in 2026.</p>
+        </div>
+        <div class="partner-card">
+          <span class="partner-card-role">Expanded CFO Delivery</span>
+          <p class="partner-card-desc">250-member fractional CFO network across WA, OR, CO, and TX — backed by institutional capital. Expanded delivery capacity when engagement scope demands it. KSIG manages the client relationship.</p>
+        </div>
+        <div class="partner-card">
+          <span class="partner-card-role">Operational Advisory</span>
+          <p class="partner-card-desc">Strategic operational advisory for succession and exit. Runs in parallel with KSIG's financial track — both moving simultaneously through the readiness window.</p>
+        </div>
+        <div class="partner-card">
+          <span class="partner-card-role">Operational Efficiency</span>
+          <p class="partner-card-desc">Virtual staffing that reduces founder/operator dependency — a primary valuation discount in lower middle market transactions — while lowering overhead during the pre-exit build phase.</p>
+        </div>
+        <div class="partner-card">
+          <span class="partner-card-role">Post-Close Wealth · Institutional</span>
+          <p class="partner-card-desc">Post-exit wealth at scale. WA State-level coverage — financial planning, estate strategy, business insurance, and long-term wealth management for founders and executives.</p>
+        </div>
+        <div class="partner-card partner-card--center">
+          <span class="partner-card-role">Post-Close Wealth · Boutique</span>
+          <p class="partner-card-desc">Boutique post-exit wealth management for high net worth individuals and family offices. Estate and succession planning focus — complements institutional coverage by client size and relationship depth.</p>
         </div>
       </div>
 
@@ -1117,26 +1350,21 @@
       <div>
         <div class="about-metrics">
           <div class="about-metric">
-            <span class="about-metric-value">$0→$30M</span>
-            <span class="about-metric-label">ARR scaled — single company</span>
+            <span class="about-metric-value">85+</span>
+            <span class="about-metric-label">Global buy-side partners across Europe and North America</span>
           </div>
           <div class="about-metric">
-            <span class="about-metric-value">$200M+</span>
-            <span class="about-metric-label">Revenue built, cumulative from scratch</span>
+            <span class="about-metric-value">$150M+</span>
+            <span class="about-metric-label">Pre-exit liquidity being deployed in 2026 for qualifying founders</span>
           </div>
           <div class="about-metric">
-            <span class="about-metric-value">$2.3M+</span>
-            <span class="about-metric-label">Net profit from a $242K loss — year one as CFO</span>
+            <span class="about-metric-value">250</span>
+            <span class="about-metric-label">Fractional CFO network across WA, OR, CO, and TX — backed by Laird Norton</span>
           </div>
           <div class="about-metric">
-            <span class="about-metric-value">81%</span>
-            <span class="about-metric-label">Revenue growth, single year</span>
+            <span class="about-metric-value">360°</span>
+            <span class="about-metric-label">Exit coverage — origination through transaction close and post-exit wealth</span>
           </div>
-          <div class="about-metric">
-            <span class="about-metric-value">25+</span>
-            <span class="about-metric-label">Years as founder-operator</span>
-          </div>
-
         </div>
       </div>
     </div>
@@ -1169,7 +1397,7 @@
     <div class="cta-inner">
       <p class="section-tag" style="justify-content:center;">Engagements Are Selective</p>
       <h2>If you're at an<br><em>inflection point —</em><br>let's talk.</h2>
-      <p>KSIG Advisors partners with founders and PE-backed operators who are ready to build toward an outcome — whether that's a transaction, a capital raise, or a leadership transition. If your situation calls for an operator-grade partner and the network behind them — reach out directly.</p>
+      <p>KSIG Advisors works with a small number of founders and PE-backed operators at a time. If your situation calls for an operator-grade partner — and the network behind them — reach out directly.</p>
       <div style="margin-bottom:2rem;">
         <a href="mailto:karl.ohlemann@ksigadvisors.com" class="btn-brass">Start a Conversation</a>
       </div>
