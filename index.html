@@ -38,6 +38,37 @@
 
     html { scroll-behavior: smooth; }
 
+    .positioning-band {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--brass);
+      border-bottom: 1px solid var(--brass);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .positioning-headline {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--brass-light);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .positioning-sub {
+      font-family: var(--body);
+      font-size: 1rem;
+      color: var(--off-white);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+      .positioning-headline { font-size: 1.25rem; }
+      .positioning-sub { font-size: 0.9rem; }
+      .positioning-band { padding: 2rem 1.25rem; }
+    }
+
     body {
       background: var(--navy);
       color: var(--off-white);
@@ -1025,6 +1056,12 @@
       <a href="#services" class="btn-outline">Our Services</a>
     </div>
   </section>
+
+  <!-- POSITIONING STATEMENT -->
+  <div class="positioning-band">
+    <p class="positioning-headline">Institutional-grade exit readiness. Founder-accessible pricing.</p>
+    <p class="positioning-sub">KSIG brings founder-owned businesses the full exit journey — financial infrastructure, operational readiness, transaction execution, and post-close wealth — without the retainer-based cost structure that locks most lower middle market owners out.</p>
+  </div>
 
   <!-- METRICS BAND -->
   <div class="metrics-band">
